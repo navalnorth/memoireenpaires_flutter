@@ -1,4 +1,4 @@
-package com.example.memoire_en_paires
+package com.navalnorth.memoire_en_paires
 
 import io.flutter.embedding.android.FlutterActivity
 

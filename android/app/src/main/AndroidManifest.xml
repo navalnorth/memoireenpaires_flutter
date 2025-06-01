@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.navalnorth.memoire_en_paires">
     <application
-        android:label="memoire_en_paires"
+        android:label="Mémoire en paires"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

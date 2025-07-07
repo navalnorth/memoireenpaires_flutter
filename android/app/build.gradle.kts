@@ -24,11 +24,10 @@ android {
         applicationId = "com.navalnorth.memoire_en_paires"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        versionCode = 5
+        versionName = "1.0.4"
     }
 
-    // 👉 Lecture du fichier key.properties
     val keystoreProperties = Properties()
     val keystorePropertiesFile = rootProject.file("key.properties")
     if (keystorePropertiesFile.exists()) {

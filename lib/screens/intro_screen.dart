@@ -1,9 +1,9 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'memory_game_screen.dart';
-// import 'ad_helper.dart'; // fichier helper pour AdMob (voir remarque plus bas)
+import '../ad_banniere.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
@@ -16,40 +16,40 @@ class _IntroScreenState extends State<IntroScreen> {
   static var myFont = GoogleFonts.pressStart2p( textStyle: const TextStyle(color: Colors.black, letterSpacing: 2) );
   static var myFontWhite = GoogleFonts.pressStart2p( textStyle: const TextStyle(color: Colors.white, letterSpacing: 2) );
 
-  // BannerAd? _bannerAdTop;
-  // BannerAd? _bannerAdBottom;
+  BannerAd? _bannerAdTop;
+  BannerAd? _bannerAdBottom;
 
-  // @override
-  // void initState() {
-  //   super.initState();
+  @override
+  void initState() {
+    super.initState();
 
-  //   _bannerAdTop = BannerAd(
-  //     adUnitId: AdHelper.bannerAdUnitId!,
-  //     size: AdSize.fullBanner,
-  //     request: const AdRequest(),
-  //     listener: BannerAdListener(
-  //       onAdLoaded: (_) => setState(() {}),
-  //       onAdFailedToLoad: (ad, error) => ad.dispose(),
-  //     ),
-  //   )..load();
+    _bannerAdTop = BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId!,
+      size: AdSize.fullBanner,
+      request: const AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) => setState(() {}),
+        onAdFailedToLoad: (ad, error) => ad.dispose(),
+      ),
+    )..load();
 
-  //   _bannerAdBottom = BannerAd(
-  //     adUnitId: AdHelper.bannerAdUnitId!,
-  //     size: AdSize.fullBanner,
-  //     request: const AdRequest(),
-  //     listener: BannerAdListener(
-  //       onAdLoaded: (_) => setState(() {}),
-  //       onAdFailedToLoad: (ad, error) => ad.dispose(),
-  //     ),
-  //   )..load();
-  // }
+    _bannerAdBottom = BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId!,
+      size: AdSize.fullBanner,
+      request: const AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) => setState(() {}),
+        onAdFailedToLoad: (ad, error) => ad.dispose(),
+      ),
+    )..load();
+  }
 
-  // @override
-  // void dispose() {
-  //   _bannerAdTop?.dispose();
-  //   _bannerAdBottom?.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    _bannerAdTop?.dispose();
+    _bannerAdBottom?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +58,12 @@ class _IntroScreenState extends State<IntroScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // if (_bannerAdTop != null)
-            //   SizedBox(
-            //     width: MediaQuery.of(context).size.width,
-            //     height: _bannerAdTop!.size.height.toDouble(),
-            //     child: AdWidget(ad: _bannerAdTop!),
-            //   ),
+            if (_bannerAdTop != null)
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: _bannerAdTop!.size.height.toDouble(),
+                child: AdWidget(ad: _bannerAdTop!),
+              ),
             Expanded(
               child: Center(
                 child: Column(
@@ -71,8 +71,8 @@ class _IntroScreenState extends State<IntroScreen> {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 120),
-                        child: Text( "MEMOIRE EN PAIRES", style: myFontWhite.copyWith(fontSize: 16),textAlign: TextAlign.center),
+                        padding: const EdgeInsets.only(top: 100),
+                        child: Text( "MEMOIRE EN PAIRES", style: myFontWhite.copyWith(fontSize: 15),textAlign: TextAlign.center),
                       ),
                     ),
                     Expanded(
@@ -87,7 +87,7 @@ class _IntroScreenState extends State<IntroScreen> {
                           decoration: const BoxDecoration(shape: BoxShape.circle),
                           child: CircleAvatar(
                             backgroundColor: Colors.deepPurple[800],
-                            radius: 65,
+                            radius: 55,
                             child: Image.asset( "assets/splash.png", fit: BoxFit.cover ),
                           ),
                         ),
@@ -117,12 +117,12 @@ class _IntroScreenState extends State<IntroScreen> {
                 ),
               ),
             ),
-            // if (_bannerAdBottom != null)
-            //   SizedBox(
-            //     width: MediaQuery.of(context).size.width,
-            //     height: _bannerAdBottom!.size.height.toDouble(),
-            //     child: AdWidget(ad: _bannerAdBottom!),
-            //   ),
+            if (_bannerAdBottom != null)
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: _bannerAdBottom!.size.height.toDouble(),
+                child: AdWidget(ad: _bannerAdBottom!),
+              ),
           ],
         ),
       ),

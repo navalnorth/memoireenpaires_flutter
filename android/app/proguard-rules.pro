@@ -10,3 +10,15 @@
 
 # Optional: Keep annotations
 -keepattributes *Annotation*
+
+# ✅ Keep Google Mobile Ads SDK (AdMob)
+-keep public class com.google.android.gms.ads.** {
+    public *;
+}
+
+-keep class com.google.ads.** {
+    *;
+}
+
+-dontwarn com.google.android.gms.ads.**
+-dontwarn com.google.ads.**
